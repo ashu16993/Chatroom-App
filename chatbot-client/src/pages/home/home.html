@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Chat - Room
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content *ngIf="check_name();else elseBlock">
+  <!-- <ion-content> -->
+      <ion-item>
+          <ion-input placeholder="Enter your Name" [(ngModel)]="input" (keyup)="$event.keyCode == 13 && setName()" ></ion-input>
+      </ion-item>
+    <button (click)="setName()" ion-button full>Set Name</button>
+  <!-- </ion-content> -->
+</ion-content>
+<ng-template padding #elseBlock>
+  
+  <ion-content >
+      <br>
+      <br>
+      <br>
+      <br>
+    <!-- The world is your oyster.
+    <p>
+      If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
+    </p> -->
+    <div *ngFor="let message of messages">
+      {{message}}
+    </div>
+
+    <ion-content scroll="false">
+        <ion-item>
+            <ion-input placeholder="Enter your message" [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" ></ion-input>
+        </ion-item>
+      <button (click)="sendMessage()" ion-button full>Send</button>
+    </ion-content>
+  </ion-content>
+</ng-template>
